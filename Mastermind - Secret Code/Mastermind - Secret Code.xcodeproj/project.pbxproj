@@ -1,0 +1,382 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CA5D1EB22BA1D1F200C3D2FA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5D1EB12BA1D1F200C3D2FA /* AppDelegate.swift */; };
+		CA5D1EB42BA1D1F200C3D2FA /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5D1EB32BA1D1F200C3D2FA /* GameViewController.swift */; };
+		CA5D1EB72BA1D1F200C3D2FA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CA5D1EB62BA1D1F200C3D2FA /* Base */; };
+		CA5D1EBA2BA1D1F200C3D2FA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = CA5D1EB92BA1D1F200C3D2FA /* Base */; };
+		CA5D1EBB2BA1D1F200C3D2FA /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = CA5D1EA62BA1D1EE00C3D2FA /* Actions.sks */; };
+		CA5D1EBC2BA1D1F200C3D2FA /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = CA5D1EA72BA1D1EE00C3D2FA /* GameScene.sks */; };
+		CA5D1EBD2BA1D1F200C3D2FA /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5D1EA82BA1D1EE00C3D2FA /* GameScene.swift */; };
+		CA5D1EBE2BA1D1F200C3D2FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA5D1EA92BA1D1F200C3D2FA /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CA5D1EA62BA1D1EE00C3D2FA /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		CA5D1EA72BA1D1EE00C3D2FA /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		CA5D1EA82BA1D1EE00C3D2FA /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		CA5D1EA92BA1D1F200C3D2FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA5D1EAE2BA1D1F200C3D2FA /* Mastermind - Secret Code.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mastermind - Secret Code.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA5D1EB12BA1D1F200C3D2FA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CA5D1EB32BA1D1F200C3D2FA /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		CA5D1EB62BA1D1F200C3D2FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CA5D1EB92BA1D1F200C3D2FA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CA5D1EAB2BA1D1F200C3D2FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CA5D1EA02BA1D1EE00C3D2FA = {
+			isa = PBXGroup;
+			children = (
+				CA5D1EA52BA1D1EE00C3D2FA /* Mastermind - Secret Code Shared */,
+				CA5D1EB02BA1D1F200C3D2FA /* Mastermind - Secret Code iOS */,
+				CA5D1EAF2BA1D1F200C3D2FA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CA5D1EA52BA1D1EE00C3D2FA /* Mastermind - Secret Code Shared */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D1EA62BA1D1EE00C3D2FA /* Actions.sks */,
+				CA5D1EA72BA1D1EE00C3D2FA /* GameScene.sks */,
+				CA5D1EA82BA1D1EE00C3D2FA /* GameScene.swift */,
+				CA5D1EA92BA1D1F200C3D2FA /* Assets.xcassets */,
+			);
+			path = "Mastermind - Secret Code Shared";
+			sourceTree = "<group>";
+		};
+		CA5D1EAF2BA1D1F200C3D2FA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D1EAE2BA1D1F200C3D2FA /* Mastermind - Secret Code.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CA5D1EB02BA1D1F200C3D2FA /* Mastermind - Secret Code iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CA5D1EB12BA1D1F200C3D2FA /* AppDelegate.swift */,
+				CA5D1EB32BA1D1F200C3D2FA /* GameViewController.swift */,
+				CA5D1EB52BA1D1F200C3D2FA /* Main.storyboard */,
+				CA5D1EB82BA1D1F200C3D2FA /* LaunchScreen.storyboard */,
+			);
+			path = "Mastermind - Secret Code iOS";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CA5D1EAD2BA1D1F200C3D2FA /* Mastermind - Secret Code iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA5D1EC12BA1D1F200C3D2FA /* Build configuration list for PBXNativeTarget "Mastermind - Secret Code iOS" */;
+			buildPhases = (
+				CA5D1EAA2BA1D1F200C3D2FA /* Sources */,
+				CA5D1EAB2BA1D1F200C3D2FA /* Frameworks */,
+				CA5D1EAC2BA1D1F200C3D2FA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Mastermind - Secret Code iOS";
+			productName = "Mastermind - Secret Code iOS";
+			productReference = CA5D1EAE2BA1D1F200C3D2FA /* Mastermind - Secret Code.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CA5D1EA12BA1D1EE00C3D2FA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					CA5D1EAD2BA1D1F200C3D2FA = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = CA5D1EA42BA1D1EE00C3D2FA /* Build configuration list for PBXProject "Mastermind - Secret Code" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CA5D1EA02BA1D1EE00C3D2FA;
+			productRefGroup = CA5D1EAF2BA1D1F200C3D2FA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CA5D1EAD2BA1D1F200C3D2FA /* Mastermind - Secret Code iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CA5D1EAC2BA1D1F200C3D2FA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA5D1EBC2BA1D1F200C3D2FA /* GameScene.sks in Resources */,
+				CA5D1EB72BA1D1F200C3D2FA /* Base in Resources */,
+				CA5D1EBB2BA1D1F200C3D2FA /* Actions.sks in Resources */,
+				CA5D1EBA2BA1D1F200C3D2FA /* Base in Resources */,
+				CA5D1EBE2BA1D1F200C3D2FA /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CA5D1EAA2BA1D1F200C3D2FA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA5D1EBD2BA1D1F200C3D2FA /* GameScene.swift in Sources */,
+				CA5D1EB42BA1D1F200C3D2FA /* GameViewController.swift in Sources */,
+				CA5D1EB22BA1D1F200C3D2FA /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CA5D1EB52BA1D1F200C3D2FA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA5D1EB62BA1D1F200C3D2FA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CA5D1EB82BA1D1F200C3D2FA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA5D1EB92BA1D1F200C3D2FA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CA5D1EBF2BA1D1F200C3D2FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CA5D1EC02BA1D1F200C3D2FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		CA5D1EC22BA1D1F200C3D2FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XD8GGBS2MA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hu.sztamas-gymate.Mastermind---Secret-Code";
+				PRODUCT_NAME = "Mastermind - Secret Code";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA5D1EC32BA1D1F200C3D2FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = XD8GGBS2MA;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "hu.sztamas-gymate.Mastermind---Secret-Code";
+				PRODUCT_NAME = "Mastermind - Secret Code";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CA5D1EA42BA1D1EE00C3D2FA /* Build configuration list for PBXProject "Mastermind - Secret Code" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA5D1EBF2BA1D1F200C3D2FA /* Debug */,
+				CA5D1EC02BA1D1F200C3D2FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA5D1EC12BA1D1F200C3D2FA /* Build configuration list for PBXNativeTarget "Mastermind - Secret Code iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA5D1EC22BA1D1F200C3D2FA /* Debug */,
+				CA5D1EC32BA1D1F200C3D2FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CA5D1EA12BA1D1EE00C3D2FA /* Project object */;
+}
