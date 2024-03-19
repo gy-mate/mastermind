@@ -28,6 +28,8 @@ class GameScene: SKScene {
     }
     
     func setUpScene() {
+        self.backgroundColor = .lightGray
+        
         // Get label node from scene and store it for use later
         self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
         if let label = self.label {
@@ -46,6 +48,11 @@ class GameScene: SKScene {
                                               SKAction.fadeOut(withDuration: 0.5),
                                               SKAction.removeFromParent()]))
         }
+        
+        let image = SKSpriteNode(imageNamed: "circle_red")
+        image.position = CGPoint(x: 0, y: 0)
+        image.zPosition = 10
+        self.addChild(image)
     }
     
     override func didMove(to view: SKView) {
