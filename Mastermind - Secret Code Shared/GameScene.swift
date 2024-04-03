@@ -49,10 +49,23 @@ class GameScene: SKScene {
                                               SKAction.removeFromParent()]))
         }
         
-        let image = SKSpriteNode(imageNamed: "circle_red")
-        image.position = CGPoint(x: 0, y: 0)
-        image.zPosition = 10
-        self.addChild(image)
+        let solutionCover = SKSpriteNode(imageNamed: "solution_cover")
+        solutionCover.position = CGPoint(x: 0, y: 1000)
+        self.addChild(solutionCover)
+        
+        let doneButtonBg = SKSpriteNode(imageNamed: "done_button_bg")
+        let doneButton = SKSpriteNode(imageNamed: "done_button")
+        doneButtonBg.position = CGPoint(x: 460, y: -740)
+        doneButton.position = CGPoint(x: 460, y: -740)
+        doneButtonBg.zPosition = 5
+        doneButton.zPosition = 6
+        self.addChild(doneButtonBg)
+        self.addChild(doneButton)
+        doneButton.alpha = 0.75
+        
+        let highlighterCircle = SKSpriteNode(imageNamed: "hole_selected")
+        highlighterCircle.position = CGPoint(x: -270, y: -740)
+        self.addChild(highlighterCircle)
     }
     
     override func didMove(to view: SKView) {
@@ -72,6 +85,15 @@ class GameScene: SKScene {
     }
 }
 
+enum usedColors: String {
+    case red = "red"
+    case green = "green"
+    case orange = "orange"
+    case blue = "blue"
+    case yellow = "yellow"
+    case purple = "purple"
+}
+
 #if os(iOS) || os(tvOS)
 // Touch-based event handling
 extension GameScene {
@@ -83,6 +105,19 @@ extension GameScene {
         
         for t in touches {
             self.makeSpinny(at: t.location(in: self), color: SKColor.green)
+            
+            let location = t.location(in: self)
+            let touchedNode = nodes(at: location)[1]
+            if touchedNode.name != nil && (usedColors(rawValue: touchedNode.name!) != nil) {
+                let newCircle = SKSpriteNode(imageNamed: "circle_\(touchedNode.name!)")
+                newCircle.position = CGPoint(x: -270, y: -740)
+                newCircle.zPosition = 10
+                self.addChild(newCircle)
+                
+//                highlight
+            } else {
+                break
+            }
         }
     }
     
