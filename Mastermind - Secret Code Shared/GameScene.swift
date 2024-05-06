@@ -21,15 +21,24 @@ class GameScene: SKScene {
     let doneButtonBg = SKSpriteNode(imageNamed: "done_button_bg")
     let doneButton = SKSpriteNode(imageNamed: "done_button")
     
-    let xValuesOfRow : [Int] = [
+    let xValuesOfColumns = [
         -270,
          -90,
-         90,
+          90,
          270,
     ]
-    var yValuesOfRows : [Int] = []
+    var yValuesOfRows: [Int] = []
+    let evaluatorOffsets = [
+        [-30, 35],
+        [30, 35],
+        [-30, -35],
+        [30, -35]
+    ]
+    var currentRow = 0
     let highlighterCircle = SKSpriteNode(imageNamed: "hole_selected")
-    var currentRowPins : [SKNode?] = []
+    var currentRowPins: [SKNode?] = []
+    var solutions: [usedColors] = []
+    var currentRowEvaluators: [SKNode?] = []
     
     class func newGameScene() -> GameScene {
         // Load 'GameScene.sks' as an SKScene.
@@ -56,7 +65,7 @@ class GameScene: SKScene {
     func setUpScene() {
         self.backgroundColor = .lightGray
         
-        let solutions = self.getFourRandomItems(from: usedColors.self)
+        solutions = self.getFourRandomItems(from: usedColors.self)
         let solutionLineY = 790 + 200
         let solutionPositions = [
             CGPoint(x: -270, y: solutionLineY),
@@ -73,7 +82,7 @@ class GameScene: SKScene {
         let solutionCover = SKSpriteNode(imageNamed: "solution_cover")
         solutionCover.position = CGPoint(x: 0, y: 1000)
         solutionCover.zPosition = 2
-        self.addChild(solutionCover)
+//        self.addChild(solutionCover)
         
         doneButtonBg.position = CGPoint(x: 460, y: -740)
         doneButton.position = CGPoint(x: 460, y: -740)
@@ -82,6 +91,7 @@ class GameScene: SKScene {
         self.addChild(doneButtonBg)
         self.addChild(doneButton)
         doneButton.alpha = 0.75
+        doneButtonBg.alpha = 0  // remove
         
         highlighterCircle.position = CGPoint(x: -270, y: -740)
         self.addChild(highlighterCircle)
@@ -118,7 +128,7 @@ extension GameScene {
             if hole == nil {
                 let addedPin = createPin(newPinName)
                 currentRowPins[i] = addedPin
-                addedPin.position = CGPoint(x: xValuesOfRow[i], y: yValuesOfRows[0])
+                addedPin.position = CGPoint(x: xValuesOfColumns[i], y: yValuesOfRows[0])
                 addedPin.zPosition = 2
                 self.addChild(addedPin)
                 updateHighlighterCircle()
@@ -130,13 +140,42 @@ extension GameScene {
     fileprivate func updateHighlighterCircle() {
         for (i, hole) in self.currentRowPins.enumerated() {
             if (hole == nil && i < 4) {
-                highlighterCircle.position = CGPoint(x: xValuesOfRow[i], y: yValuesOfRows[0])
-                doneButton.alpha = 0.75
+                highlighterCircle.position = CGPoint(x: xValuesOfColumns[i], y: yValuesOfRows[0])
+                doneButton.alpha = 0  // 0.75
                 return
             }
         }
         highlighterCircle.position = CGPoint(x: 460, y: yValuesOfRows[0])
-        doneButton.alpha = 1
+        doneButton.alpha = 0  // 1
+        
+        evaluateGuess()
+    }
+    
+    func evaluateGuess() {
+        for (pin_i, pin) in currentRowPins.enumerated() {
+            var pin_name: String? = nil
+            for (solution_i, solution) in self.solutions.enumerated() {
+                do {
+                    let pattern = try NSRegularExpression(pattern: "(?<=circle_).*")
+                    let match = pattern.matches(in: pin!.name!, range: NSRange(pin!.name!.startIndex..., in: pin!.name!))[0]
+                    if let range = Range(match.range, in: pin!.name!) {
+                            let pin_name = pin!.name![range]
+                        }
+                } catch {}
+                if solution.rawValue == pin_name {
+                    if pin_i == solution_i {
+                        currentRowEvaluators.insert(SKSpriteNode(imageNamed: "pin_black"), at: 0)
+                    } else {
+                        currentRowEvaluators.append(SKSpriteNode(imageNamed: "pin_white"))
+                    }
+                }
+            }
+        }
+        
+        for (i, evaluator) in self.currentRowEvaluators.enumerated() {
+            evaluator?.position = CGPoint(x: 470 + evaluatorOffsets[i][0], y: yValuesOfRows[currentRow] + evaluatorOffsets[i][1])
+            self.addChild(evaluator!)
+        }
     }
     
     func removePin(_ pinToRemove: SKNode) {
@@ -157,6 +196,18 @@ extension GameScene {
                 if Int(touchedPin!.position.y) == yValuesOfRows[0] {
                     removePin(touchedPin!)
                 }
+            }
+        } else {
+            if touchedNodes[0].name == "reset" {
+                self.removeAllChildren()
+                for var pin in currentRowPins {
+                    pin = nil;
+                }
+                solutions = self.getFourRandomItems(from: usedColors.self)
+                
+                let scene = GameScene.newGameScene()
+                let skView = self.view!
+                skView.presentScene(scene)
             }
         }
     }
