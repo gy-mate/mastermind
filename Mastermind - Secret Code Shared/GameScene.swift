@@ -28,6 +28,9 @@ class GameScene: SKScene {
          270,
     ]
     var yValuesOfRows: [Int] = []
+    
+    var rowNumbers: [SKLabelNode] = []
+    
     let evaluatorOffsets = [
         [-30, 35],
         [30, 35],
@@ -66,6 +69,10 @@ class GameScene: SKScene {
     func setUpScene() {
         self.backgroundColor = .lightGray
         
+        for i in 0..<10 {
+            self.yValuesOfRows.append(-740 + 170 * i)
+        }
+        
         solutions = self.getFourRandomItems(from: usedColors.self)
         let solutionLineY = 790 + 200
         let solutionPositions = [
@@ -85,6 +92,12 @@ class GameScene: SKScene {
         solutionCover.alpha = 0.5
         self.addChild(solutionCover)
         
+        for i in 1...10 {
+            let rowNumber = SKLabelNode(text: "\(i)")
+            rowNumber.position = CGPoint(x: -450, y: yValuesOfRows[i-1])
+            self.rowNumbers.append(rowNumber)
+        }
+        
         doneButtonBg.position = CGPoint(x: 460, y: -740)
         doneButton.position = CGPoint(x: 460, y: -740)
         doneButtonBg.zPosition = 5
@@ -96,10 +109,6 @@ class GameScene: SKScene {
         
         resetHighlighterCircle()
         self.addChild(highlighterCircle)
-        
-        for i in 0..<10 {
-            self.yValuesOfRows.append(-740 + 170 * i)
-        }
         
         resetGuesses()
     }
@@ -124,12 +133,12 @@ extension GameScene {
         return newPin
     }
     
-    func insertPin(_ newPinName: String) {
+    func addGuess(_ newPinName: String) {
         for (i, hole) in self.guesses.enumerated() {
             if hole == nil {
                 let addedPin = createPin(newPinName)
                 guesses[i] = addedPin
-                addedPin.position = CGPoint(x: xValuesOfColumns[i], y: yValuesOfRows[0])
+                addedPin.position = CGPoint(x: xValuesOfColumns[i], y: yValuesOfRows[currentRow])
                 addedPin.zPosition = 2
                 self.addChild(addedPin)
                 updateHighlighterCircle()
@@ -141,16 +150,16 @@ extension GameScene {
     fileprivate func updateHighlighterCircle() {
         for (i, hole) in self.guesses.enumerated() {
             if (hole == nil && i < 4) {
-                highlighterCircle.position = CGPoint(x: xValuesOfColumns[i], y: yValuesOfRows[0])
+                highlighterCircle.position = CGPoint(x: xValuesOfColumns[i], y: yValuesOfRows[currentRow])
                 doneButton.alpha = 0.75
                 return
             }
         }
-        highlighterCircle.position = CGPoint(x: 460, y: yValuesOfRows[0])
+        highlighterCircle.position = CGPoint(x: 460, y: yValuesOfRows[currentRow])
         doneButton.alpha = 1
     }
     
-    func evaluateGuess() {
+    func evaluateGuesses() {
         for (pin_i, pin) in guesses.enumerated() {
             if pin!.name! == self.solutions[pin_i].rawValue {
                 let evaluatorPin = SKSpriteNode(imageNamed: "pin_black")
@@ -162,9 +171,9 @@ extension GameScene {
                 if solution.rawValue == pin!.name! {
                     let evaluatorPin = SKSpriteNode(imageNamed: "pin_white")
                     evaluatorPin.name = "white"
-                    self.currentRowEvaluators.insert(evaluatorPin, at: 0)
+                    self.currentRowEvaluators.append(evaluatorPin)
+                    break
                 }
-                break
             }
         }
         
@@ -181,7 +190,8 @@ extension GameScene {
                 numOfBlackEvaluators += 1
             }
         }
-        if numOfBlackEvaluators == 4 {
+        if self.currentRow == 10 - 1 || numOfBlackEvaluators == 4 {
+            self.removeChildren(in: [self.highlighterCircle, self.doneButton, self.doneButtonBg])
             self.solutionCover.position.x += 900
         }
     }
@@ -196,34 +206,36 @@ extension GameScene {
         let location = touches.first!.location(in: self)
         let touchedNodes = nodes(at: location)
         let rowOfPin = touchedNodes.first(where: {$0.name == "colors"})
-        if touchedNodes.count > 0 && touchedNodes[0].name != nil && touchedNodes[0].name != "done" {
-            let touchedPin = touchedNodes.first(where: {usedColors(rawValue: $0.name!) != nil})
-            if touchedPin != nil {
-                if (rowOfPin != nil && rowOfPin!.position.y == -1000) {
-                    insertPin(touchedPin!.name!)
+        if touchedNodes.count > 0 && touchedNodes[0].name != nil {
+            if touchedNodes[0].name != "done" {
+                let touchedPin = touchedNodes.first(where: {usedColors(rawValue: $0.name!) != nil})
+                if touchedPin != nil {
+                    if (rowOfPin != nil && rowOfPin!.position.y == -1000) {
+                        addGuess(touchedPin!.name!)
+                    } else {
+                        if Int(touchedPin!.position.y) == yValuesOfRows[0] {
+                            removePin(touchedPin!)
+                        }
+                    }
                 } else {
-                    if Int(touchedPin!.position.y) == yValuesOfRows[0] {
-                        removePin(touchedPin!)
+                    if touchedNodes.count > 0 && touchedNodes[0].name == "reset" {
+                        self.removeAllChildren()
+                        for var pin in guesses {
+                            pin = nil;
+                        }
+                        solutions = self.getFourRandomItems(from: usedColors.self)
+                        
+                        let scene = GameScene.newGameScene()
+                        let skView = self.view!
+                        skView.presentScene(scene)
                     }
                 }
             } else {
-                if touchedNodes.count > 0 && touchedNodes[0].name == "reset" {
-                    self.removeAllChildren()
-                    for var pin in guesses {
-                        pin = nil;
-                    }
-                    solutions = self.getFourRandomItems(from: usedColors.self)
-                    
-                    let scene = GameScene.newGameScene()
-                    let skView = self.view!
-                    skView.presentScene(scene)
+                if touchedNodes[0].name == "done" && touchedNodes[0].alpha == 1 {
+                        evaluateGuesses()
+                        checkGameOver()
+                        moveToNextRow()
                 }
-            }
-        } else {
-            if touchedNodes[0].name == "done" && touchedNodes[0].name != nil && touchedNodes[0].alpha == 1 {
-                evaluateGuess()
-                checkGameOver()
-                moveToNextRow()
             }
         }
     }
@@ -232,6 +244,7 @@ extension GameScene {
         self.currentRow += 1
         resetHighlighterCircle()
         resetGuesses()
+        resetEvaluators()
         moveDoneButtonUp()
     }
     
@@ -239,9 +252,14 @@ extension GameScene {
         highlighterCircle.position = CGPoint(x: -270, y: -740 + 170 * currentRow)
     }
     
+    func resetEvaluators() {
+        self.currentRowEvaluators = []
+    }
+    
     func moveDoneButtonUp() {
         doneButtonBg.position.y += 170
         doneButton.position.y += 170
+        doneButton.alpha = 0.75
     }
     
     func resetGuesses() {
